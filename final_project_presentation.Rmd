@@ -1,0 +1,92 @@
+---
+title: "Twitter Analysis of Popular Musical Artists"
+author: "Elise Roche"
+date: "December 18, 2017"
+output:
+  ioslides_presentation: default
+---
+
+```{r include = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(gridExtra)
+```
+
+## My project aims to
+
+- analyze the different language used to tweet about popular music artists
+- see where tweets about artists are geographically located
+
+## Tweet Locations
+- tweet maps turned out pretty much the same
+- this is likely due to widespread national reach of each artist
+
+## Rihanna Tweet Map
+
+![](https://i.imgur.com/QMYmcgf.png)
+
+## Taylor Swift Tweet Map
+
+![](https://i.imgur.com/DvVsR3a.png)
+
+## Justin Bieber Tweet Map
+
+![](https://i.imgur.com/Z9M4pqg.png)
+
+## Kendrick Lamar Tweet Map
+
+![](https://i.imgur.com/3cDPSCL.png)
+
+```{r include = FALSE}
+library(streamR)
+source("sentiment.R")
+```
+
+## Top Words By Artist
+```{r warning = FALSE, message = FALSE}
+kable(head(rihannacount), caption = "Top Words in Tweets About Rihanna")
+```
+
+---
+
+```{r warning = FALSE, message = FALSE}
+kable(head(tswiftcount), caption = "Top Words in Tweets About Taylor Swift")
+```
+
+---
+
+```{r warning = FALSE, message = FALSE}
+kable(head(jbiebercount), caption = "Top Words in Tweets About Justin Bieber")
+```
+
+---
+
+```{r warning = FALSE, message = FALSE}
+kable(head(kendrickcount), caption = "Top Words in Tweets About Kendrick Lamar")
+```
+
+## Sentiments overall
+- Rihanna, Taylor, and Kendrick had more negative words than positive
+- Justin had more positive than negative
+- A larger scale study could tell us if this is due to gender, race, or some other factor
+
+---
+
+```{r}
+grid.arrange(rihannaplot1, tswiftplot1, jbieberplot1, klamarplot1, ncol=2)
+```
+
+## Sentiments by tweet
+- Justin seems to have the most neutral tweets
+- negative tweets seem to be more strongly negative than positive tweets are strongly positive
+
+```{r}
+grid.arrange(rihannaplot2, tswiftplot2, jbieberplot2, klamarplot2, ncol=2)
+```
+
+## Word Frequency by Artist App
+- an example image from my shiny app which can be accessed here: https://er0che.shinyapps.io/415_final_project/
+
+```{r, out.width = "800px"}
+knitr::include_graphics("https://i.imgur.com/PByIpMd.png")
+```
+
